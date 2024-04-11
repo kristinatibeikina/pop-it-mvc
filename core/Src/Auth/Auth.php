@@ -36,6 +36,16 @@ class Auth
         return false;
     }
 
+    //Проверка пользователя, что он администратор
+    public static function checkRole(): bool
+    {
+        $userRole = self::user()::where('id', '=', $_SESSION['id'])->first()->role_id;
+
+        if($userRole === 1) return true;
+        else return false;
+    }
+
+
     //Возврат текущего аутентифицированного пользователя
     public static function user()
     {
@@ -59,12 +69,6 @@ class Auth
         return true;
     }
 
-    public static function checkRole(): bool
-    {
-        $userRole = self::user()::where('id', '=', $_SESSION['id'])->first()->role_id;
 
-        if($userRole === 1) return true;
-        else return false;
-    }
 
 }
