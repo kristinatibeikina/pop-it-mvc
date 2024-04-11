@@ -1,0 +1,35 @@
+*{
+    margin: 0 auto;
+    align-items: center;
+    background-color: #ffffff;
+}
+body{
+    height: 717px;
+}
+.nav{
+    height: 100px;
+    width: 1280px;
+    background-color: #35359b;
+}
+.login_bloc{
+    width: 1280px;
+    margin: 0 auto;
+}
+.input_login{
+    margin: 44px 0 25px 0;
+}
+.input_password{
+    margin-bottom: 25px;
+}
+.title_login{
+    margin-top: 88px;
+    font-size: 64px;
+}
+.btn{
+    background-color: #35359b;
+}
+.footer_bloc{
+    height: 100px;
+    width: 1280px;
+    background-color: #35359b;
+}
