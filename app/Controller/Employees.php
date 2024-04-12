@@ -25,5 +25,11 @@ class Employees
         return new View('employees.addendum');
     }
 
+    public function building(Request $request): string
+    {
+        $buildings= Building::all();
+        return new View('employees.building',['buildings'=>$buildings]);
+    }
+
 
 }
