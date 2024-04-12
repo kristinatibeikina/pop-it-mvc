@@ -1,3 +1,5 @@
+<h3><?= $message ?? ''; ?></h3>
+
 <div class="create_user">
     <h1 class="title_login">Добавление</h1>
     <h2 class="add_title_dv">Новые сотрудники</h2>

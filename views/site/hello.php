@@ -1,6 +1,6 @@
 <div class="hello">
     <div class="hello_bloc">
-        <h1>Здравствуйте <?= app()->auth::user()->name ?></h1>
-        <h3>Главная страница</h3>
+        <h1 class="hello_title">Личный кабинет</h1>
+        <h3><?= app()->auth::user()->name ?></h3>
     </div>
 </div>

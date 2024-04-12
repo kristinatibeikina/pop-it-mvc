@@ -45,16 +45,6 @@
 <main>
     <?= $content ?? '' ?>
 </main>
-<footer>
-    <div class="footer_bloc">
-        <div class="footer_text">
-            <a href="#" class="a_footer">Условия</a>
-            <a href="#" class="a_footer">Безопасность</a>
-            <a href="#" class="a_footer">Конфиденциальность</a>
-            <a href="#" class="a_footer">Контакты</a>
-            <a href="#" class="a_footer">Документы</a>
-        </div>
-    </div>
-</footer>
+
 </body>
 </html>
