@@ -5,6 +5,7 @@
         <form method="post" class="form_add ">
             <select name="role" class="role">
                 <option selected="selected">Здание</option>
+
                 <option>Сотрудник</option>
                 <option>Администратор</option>
             </select><br>

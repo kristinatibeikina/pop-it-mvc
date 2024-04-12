@@ -1,16 +1,12 @@
 <?php
 
 namespace Controller;
-
-
+use Src\Request;
+use Model\Building;
 use Src\View;
 class Employees
 {
 
-    public function addendum(): string
-    {
-        return new View('employees.addendum');
-    }
 
 
     public function counting(): string
@@ -18,6 +14,16 @@ class Employees
         return new View('employees.counting');
     }
 
+
+    public function addendum(Request $request): string
+    {
+
+        if ($request->method === 'POST' && Building::create($request->all())) {
+            app()->route->redirect('/addendum');
+        }
+
+        return new View('employees.addendum');
+    }
 
 
 }

@@ -156,4 +156,9 @@ main{
     margin-top: 25px;
 }
 
-
+.building_now{
+    margin-bottom: 25px;
+    height: 35px;
+    width: 550px;
+    padding-left: 25px;
+}

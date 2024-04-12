@@ -12,7 +12,17 @@ class Building extends Model
     public $timestamps = false;
     protected $fillable = [
         'title',
-        'Address'
+        'address'
     ];
+    protected static function booted()
+    {
+        static::created(function ($building) {
+            $building->save();
+        });
+    }
+
+    public $table = 'building';
+
+
 
 }
