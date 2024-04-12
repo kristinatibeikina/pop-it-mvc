@@ -3,6 +3,7 @@
 namespace Controller;
 use Src\Request;
 use Model\Building;
+use Model\Views;
 use Src\View;
 class Employees
 {
@@ -25,10 +26,16 @@ class Employees
         return new View('employees.addendum');
     }
 
-    public function building(Request $request): string
+    public function building(): string
     {
         $buildings= Building::all();
         return new View('employees.building',['buildings'=>$buildings]);
+    }
+
+    public function views(Request $request): string
+    {
+        $views= Views::all();
+        return new View('employees.building',['views'=>$views]);
     }
 
 
