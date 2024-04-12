@@ -9,7 +9,11 @@
         </form>
         <h2 class="add_title_dv">Новые помещения</h2>
         <form method="post" class="form_add_room ">
-            <input type="te" name="title" placeholder="Здание" class="input_login"><br>
+            <select name="role" class="role">
+                <option selected="selected">Здание</option>
+                <option>Сотрудник</option>
+                <option>Администратор</option>
+            </select><br>
             <input type="title" name="adres" placeholder="Название или номер помещения" class="input_password"><br>
             <input type="password" name="adres" placeholder="Вид помещения" class="input_password"><br>
             <input type="password" name="adres" placeholder="Площадь" class="input_password"><br>
