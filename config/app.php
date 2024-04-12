@@ -14,4 +14,8 @@ return [
         'admin' => \Middlewares\Admin::class,
         'employees' => \Middlewares\Employees::class,
     ],
+    'routeAppMiddleware' => [
+        'trim' => \Middlewares\TrimMiddleware::class,
+    ],
+
 ];
