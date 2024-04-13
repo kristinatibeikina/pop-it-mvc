@@ -5,22 +5,26 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Building extends Model
+class Room extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
         'title',
-        'address',
+        'S',
+        'count',
+        'building_id',
+        'view_id',
+
     ];
     protected static function booted()
     {
-        static::created(function ($building) {
-            $building->save();
+        static::created(function ($room) {
+            $room->save();
         });
     }
 
-    public $table = 'building';
 
+    protected $table = 'room';
 }

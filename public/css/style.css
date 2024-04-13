@@ -1,15 +1,27 @@
-*{
+* {
     margin: 0 auto;
     align-items: center;
     background-color: #ffffff;
 }
 body{
-    height: 717px;
+    height: 1200px;
 }
 .nav{
-    height: 100px;
+    height: 56px;
     width: 1280px;
     background-color: #35359b;
+    padding-bottom: 44px;
+    display: flex;
+    right: 0;
+}
+.nav_bloc{
+    width: 880px;
+    margin-left: 218px;
+    background-color: #35359b;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
 }
 .login_bloc{
     width: 1280px;
@@ -17,9 +29,17 @@ body{
 }
 .input_login{
     margin: 44px 0 25px 0;
+    height: 35px;
+    width: 550px;
+    padding-left: 25px;
+    border-color: darkgray;
 }
 .input_password{
     margin-bottom: 25px;
+    height: 35px;
+    width: 550px;
+    padding-left: 25px;
+    border-color: darkgray;
 }
 .title_login{
     margin-top: 88px;
@@ -27,9 +47,123 @@ body{
 }
 .btn{
     background-color: #35359b;
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    color: white;
+    border: none;
 }
 .footer_bloc{
     height: 100px;
     width: 1280px;
     background-color: #35359b;
+    margin-bottom: 0;
+}
+.login_litl_bloc{
+    margin-left: 218px;
+}
+.footer_text{
+    margin-left: 218px;
+    display: flex;
+    align-items: center;
+    margin-top: 41px;
+    width: 880px;
+    background-color: #35359b;
+}
+.a_footer{
+    margin-top: 44px;
+    background-color: #35359b;
+    color: white;
+    text-decoration: none;
+}
+.img{
+    width: 71px;
+    height: 84px;
+    background-color: #35359b;
+    color: white;
+
+}
+
+
+
+
+
+/* ADDENDUM*/
+
+
+
+main{
+    width: 1280px;
+    margin: 0 auto;
+}
+.add_bloc{
+    margin-left: 218px;
+}
+.add_title{
+    margin-top: 88px;
+    margin-bottom: 44px;
+    font-size: 64px;
+}
+.add_title_dv{
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.form_add{
+    margin-bottom: 88px;
+}
+
+
+
+/*HELLO*/
+
+.hello{
+    width: 1280px;
+    height: 700px;
+    margin: 0 auto;
+}
+.hello_bloc{
+    height: 1000px;
+    margin-left: 218px;
+}
+.hello_title{
+    margin-top: 88px;
+    margin-bottom: 44px;
+    font-size: 64px;
+}
+
+
+
+/*SIGNUP*/
+.create_user{
+    margin-top: 88px;
+    margin-left: 218px;
+}
+.role{
+    color: #796363;
+    padding-left: 20px;
+    height: 40px;
+    width: 580px;
+    margin-bottom: 25px;
+}
+
+
+
+/*COUNTING*/
+
+.counting{
+    width: 1280px;
+    margin: 0 auto;
+}
+.counting_bloc{
+    margin-left: 218px;
+}
+.response{
+    margin-top: 25px;
+}
+
+.building_now{
+    margin-bottom: 25px;
+    height: 35px;
+    width: 550px;
+    padding-left: 25px;
 }
