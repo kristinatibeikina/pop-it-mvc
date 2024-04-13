@@ -1,13 +1,15 @@
 <?php
 
 namespace Controller;
+use Src\Validator\Validator;
+
 use Model\Room;
 use Src\Request;
 use Model\Building;
 use Model\Views;
 use Src\View;
 
-use Src\Validator\Validator;
+
 class Employees
 {
 
@@ -18,9 +20,14 @@ class Employees
     {
         if($request->method === 'POST'){
             $validator = new Validator($request->all(),[
-                'title' => ['unique:building,title'],
+                'title' => ['unique:building,title', 'required'],
+                'address'=>['required']
             ],
-            ['unique' =>'Поле Название должно быть уникальное значение']);
+                [
+                    'required' => 'field empty',
+                    'unique' => 'Field :the field must be unique',
+                ]);
+
 
             if($validator->fails()){
                 return new View('employees.addendum',
