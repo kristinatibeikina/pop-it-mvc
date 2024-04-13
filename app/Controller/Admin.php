@@ -15,10 +15,11 @@ class Admin
             $validator = new Validator($request->all(), [
                 'name' => ['required'],
                 'login' => ['required', 'unique:users,login'],
-                'password' => ['required']
+                'password' => ['required','minimum']
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'minimum'=>'Поле :field недостаточный размер (мин 9 симаолов)'
             ]);
 
             if($validator->fails()){

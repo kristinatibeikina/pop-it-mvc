@@ -6,7 +6,8 @@ return [
     'identity' => \Model\User::class,
     'validators' => [
         'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class
+        'unique' => \Validators\UniqueValidator::class,
+        'minimum' => \Validators\MinimumValidator::class
     ],
     //Классы для middleware
     'routeMiddleware' => [
