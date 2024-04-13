@@ -106,4 +106,40 @@ class Employees
         return new View('employees.counting', ['totalArea' => $totalArea]);
     }
 
+
+
+    public function cv(Request $request): string
+    {
+        // Площадь
+        $place = 0;
+        if ($request->method === 'GET') {
+
+
+            // Получаем название выбранного здания
+            $buildingTitle = $request->get('building_id');
+
+
+            $roomTitle = $request->get('room');
+
+            // Находим соответствующий building_id
+            $building = Building::where('title', $buildingTitle)->first();
+
+            // Если здание найдено, ищем все аудитории, относящиеся к этому зданию
+            if ($building) {
+                $rooms = Room::where('building_id', $building->id)
+                    ->where('title', $roomTitle) // Условие для выбора только аудиторий
+                    ->get();
+
+                // Вычисляем кол-во посадочных мест
+                foreach ($rooms as $room) {
+                    $place += $room->count;
+                }
+            }
+        }
+
+
+        // Отображаем представление с площадью
+        return new View('employees.cv', ['place' => $place, 'rooms' => $rooms]);
+    }
+
 }
