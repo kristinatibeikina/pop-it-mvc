@@ -30,8 +30,9 @@
                 else:
                     ?>
                     <a href="<?= app()->route->getUrl('/addendum') ?>" class="a_footer">Дополнение задния</a>
-                    <a href="<?= app()->route->getUrl('/room') ?>" class="a_footer">Дополнение комнаты</a>
-                    <a href="<?= app()->route->getUrl('/counting') ?>" class="a_footer">Подсчет</a>
+                    <a href="<?= app()->route->getUrl('/room') ?>" class="a_footer">Дополнение помещения</a>
+                    <a href="<?= app()->route->getUrl('/counting') ?>" class="a_footer">Подсчет площади</a>
+                    <a href="<?= app()->route->getUrl('/cv') ?>" class="a_footer">Подсчет мест</a>
                     <a href="<?= app()->route->getUrl('/hello') ?>" class="a_footer">Личный кабинет</a>
                     <a href="<?= app()->route->getUrl('/logout') ?>" class="a_footer">Выход</a>
             <?php

@@ -20,12 +20,13 @@ class Employees
     {
         if($request->method === 'POST'){
             $validator = new Validator($request->all(),[
-                'title' => ['unique:building,title', 'required'],
+                'title' => ['unique:building,title', 'required','cyrillic'],
                 'address'=>['required']
             ],
                 [
                     'required' => 'field empty',
                     'unique' => 'Field :the field must be unique',
+                    'cyrillic' => 'Field none cyrillic',
                 ]);
 
 
@@ -67,8 +68,24 @@ class Employees
     public function room(Request $request): string
     {
         //Cохранение данных в базу данных
-        if ($request->method === 'POST') {
-            // Пример сохранения данных помещения в базу данных
+        if($request->method === 'POST'){
+            $validator = new Validator($request->all(),[
+                'title' => ['unique:building,title', 'required'],
+                'S'=>['required'],
+                'count'=>['required'],
+                'building_id'=>['required'],
+                'view_id'=>['required'],
+            ],
+                [
+                    'required' => 'empty',
+                    'unique' => 'Field must be unique',
+                ]);
+
+
+            if($validator->fails()){
+                return new View('employees.room',
+                    ['message' => json_encode($validator->errors(),JSON_FORCE_OBJECT)]);
+            }
             if (Room::create($request->all())) {
                 app()->route->redirect('/room');
             }
@@ -108,9 +125,18 @@ class Employees
                 }
             }
         }
+        $square = 0;
+
+        if ($request->method === 'GET') {
+            $rooms=Room::all();
+            foreach ($rooms as $room) {
+                $square += $room->S;
+            }
+
+        }
 
         // Отображаем представление с площадью
-        return new View('employees.counting', ['totalArea' => $totalArea]);
+        return new View('employees.counting', ['totalArea' => $totalArea, 'square' => $square]);
     }
 
 
@@ -148,5 +174,8 @@ class Employees
         // Отображаем представление с площадью
         return new View('employees.cv', ['place' => $place, 'rooms' => $rooms]);
     }
+
+
+
 
 }

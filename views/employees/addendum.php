@@ -1,4 +1,4 @@
-<h3><?= $message ?? ''; ?></h3>
+<h3><?= $message ?? ''; ?></h3><br>
 <div class="add">
     <div class="add_bloc">
         <h1 class="add_title">Добавление</h1>

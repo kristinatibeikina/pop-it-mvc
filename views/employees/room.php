@@ -1,3 +1,4 @@
+<h3><?= $message ?? ''; ?></h3><br>
 <div class="add">
     <div class="add_bloc">
         <h2 class="add_title_dv">Новые помещения</h2>
