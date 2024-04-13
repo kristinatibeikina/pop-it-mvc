@@ -29,7 +29,8 @@
                 <?php
                 else:
                     ?>
-                    <a href="<?= app()->route->getUrl('/addendum') ?>" class="a_footer">Дополнение</a>
+                    <a href="<?= app()->route->getUrl('/addendum') ?>" class="a_footer">Дополнение задния</a>
+                    <a href="<?= app()->route->getUrl('/room') ?>" class="a_footer">Дополнение комнаты</a>
                     <a href="<?= app()->route->getUrl('/counting') ?>" class="a_footer">Подсчет</a>
                     <a href="<?= app()->route->getUrl('/hello') ?>" class="a_footer">Личный кабинет</a>
                     <a href="<?= app()->route->getUrl('/logout') ?>" class="a_footer">Выход</a>

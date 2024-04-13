@@ -13,11 +13,6 @@ class Employees
 
 
 
-    public function counting(): string
-    {
-        return new View('employees.counting');
-    }
-
     //Создание названий зданий
     public function addendum(Request $request): string
     {
@@ -64,7 +59,7 @@ class Employees
 
     public function room(Request $request): string
     {
-        // Cохранение данных в базу данных
+        //Cохранение данных в базу данных
         if ($request->method === 'POST') {
             // Пример сохранения данных помещения в базу данных
             if (Room::create($request->all())) {
@@ -79,6 +74,36 @@ class Employees
         // Отображение представления
         return new View('employees.room');
 
+    }
+
+
+    public function counting(Request $request): string
+    {
+        // Площадь
+        $totalArea = 0;
+
+        if ($request->method === 'GET') {
+            // Получаем название выбранного здания
+            $buildingTitle = $request->get('building_id');
+
+            // Находим соответствующий building_id
+            $building = Building::where('title', $buildingTitle)->first();
+
+            // Если здание найдено, ищем все аудитории, относящиеся к этому зданию
+            if ($building) {
+                $rooms = Room::where('building_id', $building->id)
+                    ->where('view_id', '3') // Условие для выбора только аудиторий
+                    ->get();
+
+                // Вычисляем площадь аудиторий
+                foreach ($rooms as $room) {
+                    $totalArea += $room->S;
+                }
+            }
+        }
+
+        // Отображаем представление с площадью
+        return new View('employees.counting', ['totalArea' => $totalArea]);
     }
 
 }
