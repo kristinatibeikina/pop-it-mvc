@@ -8,7 +8,8 @@ return [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class,
         'minimum' => \Validators\MinimumValidator::class,
-        'cyrillic' => \Validators\CyrillicValidator::class
+        'cyrillic' => \Validators\CyrillicValidator::class,
+        'numeric' => \Validators\NumericValidator::class,
     ],
     //Классы для middleware
     'routeMiddleware' => [

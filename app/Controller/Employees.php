@@ -71,14 +71,15 @@ class Employees
         if($request->method === 'POST'){
             $validator = new Validator($request->all(),[
                 'title' => ['unique:building,title', 'required'],
-                'S'=>['required'],
-                'count'=>['required'],
+                'S'=>['required','numeric'],
+                'count'=>['required','numeric'],
                 'building_id'=>['required'],
                 'view_id'=>['required'],
             ],
                 [
                     'required' => 'empty',
                     'unique' => 'Field must be unique',
+                    'numeric' => 'Field none numeric',
                 ]);
 
 
