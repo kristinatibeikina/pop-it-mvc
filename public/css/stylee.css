@@ -167,3 +167,13 @@ main{
     width: 550px;
     padding-left: 25px;
 }
+.a_search{
+    background-color: #35359b;
+    color: white;
+    text-decoration: none;
+}
+.search_response{
+    font-size: 35px;
+    display: inline-block;
+    margin-bottom: 25px;
+}

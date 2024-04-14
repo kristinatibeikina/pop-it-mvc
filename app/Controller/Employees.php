@@ -178,5 +178,29 @@ class Employees
 
 
 
+    public function search(Request $request): string
+    {
+        $message = null;
+        $room = [];
+        if ($request->get('search')) {
+            // Получаем параметр поиска из запроса
+            $search = $request->get('search');
+
+            // Если есть параметр поиска, выполняем поиск
+            if ($search) {
+                // Выполняем поиск дисциплин по имени
+                $room = Room::where('title', 'like', '%' . $search . '%')->get();
+
+            }
+            if ($room->isEmpty()) {
+                $message = 'Помещения с таким названием отсутствуют';
+            }
+
+        } else{
+            $room = Room::all();
+        }
+
+        return new View('employees.search', ['room' => $room, 'message' => $message ?? null]);
+    }
 
 }

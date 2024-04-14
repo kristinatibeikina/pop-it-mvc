@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/pop-it-mvc/public/css/style.css">
+    <link rel="stylesheet" href="/pop-it-mvc/public/css/stylee.css">
 
     <title>Pop it MVC</title>
 </head>
@@ -29,10 +29,11 @@
                 <?php
                 else:
                     ?>
-                    <a href="<?= app()->route->getUrl('/addendum') ?>" class="a_footer">Дополнение задния</a>
-                    <a href="<?= app()->route->getUrl('/room') ?>" class="a_footer">Дополнение помещения</a>
+                    <a href="<?= app()->route->getUrl('/addendum') ?>" class="a_footer">Доп задния</a>
+                    <a href="<?= app()->route->getUrl('/room') ?>" class="a_footer">Доп помещения</a>
                     <a href="<?= app()->route->getUrl('/counting') ?>" class="a_footer">Подсчет площади</a>
                     <a href="<?= app()->route->getUrl('/cv') ?>" class="a_footer">Подсчет мест</a>
+                    <a href="<?= app()->route->getUrl('/search') ?>" class="a_footer">Поиск</a>
                     <a href="<?= app()->route->getUrl('/hello') ?>" class="a_footer">Личный кабинет</a>
                     <a href="<?= app()->route->getUrl('/logout') ?>" class="a_footer">Выход</a>
             <?php

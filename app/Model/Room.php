@@ -25,6 +25,12 @@ class Room extends Model
         });
     }
 
+    public static function search($query)
+    {
+        // Используем метод where для выполнения поиска по названию товара или другим полям
+        return self::where('title', 'LIKE', "%{$query}%")->get();
+    }
+
 
     protected $table = 'room';
 }

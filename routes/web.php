@@ -10,4 +10,5 @@ Route::add(['GET'], '/counting', [Controller\Employees::class, 'counting','squar
 Route::add(['GET', 'POST'], '/addendum', [Controller\Employees::class, 'addendum'])->middleware('employees');
 Route::add(['GET', 'POST'], '/room', [Controller\Employees::class, 'room'])->middleware('employees');
 Route::add(['GET'], '/cv', [Controller\Employees::class, 'cv'])->middleware('employees');
-Route::add(['GET'], '/square', [Controller\Employees::class, 'square'])->middleware('employees');
+Route::add(['GET'], '/img', [Controller\Employees::class, 'img'])->middleware('employees');
+Route::add(['GET','POST'], '/search', [Controller\Employees::class, 'search'])->middleware('employees');
