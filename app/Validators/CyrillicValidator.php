@@ -7,7 +7,7 @@ use Src\Validator\AbstractValidator;
 class CyrillicValidator extends AbstractValidator
 {
 
-    protected string $message = 'Field :недостаточный размер';
+    protected string $message = 'Field :кирилица';
 
     public function rule(): bool
     {

@@ -7,7 +7,7 @@ use Src\Validator\AbstractValidator;
 class MinimumValidator extends AbstractValidator
 {
 
-    protected string $message = 'Field :недостаточный размер';
+    protected string $message = 'Field :минимальный размер';
 
     public function rule(): bool
     {

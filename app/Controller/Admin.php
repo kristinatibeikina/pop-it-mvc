@@ -13,13 +13,15 @@ class Admin
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'name' => ['required'],
+                'name' => ['required','cyrillic'],
                 'login' => ['required', 'unique:users,login'],
-                'password' => ['required','minimum']
+                'password' => ['required','minimum','latin']
             ], [
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально',
-                'minimum'=>'Поле :field недостаточный размер (мин 9 симаолов)'
+                'minimum'=>'Поле :field недостаточный размер (мин 9 симаолов)',
+                'latin'=>'Поле :field только латиница и цифры',
+                'cyrillic' => 'Поле :field только кирилица',
             ]);
 
             if($validator->fails()){

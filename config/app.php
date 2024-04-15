@@ -10,6 +10,7 @@ return [
         'minimum' => \Validators\MinimumValidator::class,
         'cyrillic' => \Validators\CyrillicValidator::class,
         'numeric' => \Validators\NumericValidator::class,
+        'latin' => \Validators\LatinValidator::class,
     ],
     //Классы для middleware
     'routeMiddleware' => [
