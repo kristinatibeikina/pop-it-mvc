@@ -6,7 +6,7 @@
         <form  method="post" enctype="multipart/form-data">
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <input type="file" name="image" ><br>
-            <button type="submit" class="btn btn_img">Загрузить изображение</button>
+            <button type="submit" class="btn btn_img">Загрузить изображение </button>
         </form>
         <?php if ($images->isNotEmpty()): ?>
             <?php foreach ($images as $image): ?>

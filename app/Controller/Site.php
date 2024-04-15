@@ -35,7 +35,7 @@ class Site
                 app()->route->redirect('/hello');
             }
         }
-        return new View('site.hello', ['message' => 'hello working','images'=>$images]);
+        return new View('site.hello', ['message' => 'hello working ','images'=>$images]);
     }
 
 
