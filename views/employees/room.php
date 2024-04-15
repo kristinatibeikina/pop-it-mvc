@@ -1,7 +1,7 @@
 <h3><?= $message ?? ''; ?></h3><br>
 <div class="add">
     <div class="add_bloc">
-        <h2 class="add_title_dv">Новые помещения</h2>
+        <h2 class="add_title">Новые помещения</h2>
         <form method="post" class="form_add_room ">
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <input type="text" name="title" placeholder="Название или номер помещения" class="input_password"><br>

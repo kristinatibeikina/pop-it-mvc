@@ -11,7 +11,7 @@
             <?php foreach ($room as $room_title) : ?>
                 <span class='search_response'>Помещение: <?php echo $room_title->title; ?></span><br>
                <span class='search_response'>Кол-во посадочных мест: <?php echo $room_title->count; ?></span><br>
-                <span class='search_response'>Площадь помещения: <?php echo $room_title->S; ?></span>
+                <span class='search_response'>Площадь помещения: <?php echo $room_title->S; ?></span><br>
             <?php endforeach; ?>
         </ul>
     </div>

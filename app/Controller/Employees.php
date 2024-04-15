@@ -102,43 +102,50 @@ class Employees
     }
 
 
-    public function counting(Request $request): string
+
+    public function c(Request $request): string
     {
         // Площадь
-        $totalArea = 0;
+        $place = 0;
 
         if ($request->method === 'GET') {
+
             // Получаем название выбранного здания
-            $buildingTitle = $request->get('building_id');
+            if($buildingId = $request->get('building_id')){
+                $rooms=Room::where('building_id',$buildingId)->where('view_id', '3') // Условие для выбора только аудиторий
+                ->get();
+                return new View('employees.counting', ['rooms' => $rooms]);
 
-            // Находим соответствующий building_id
-            $building = Building::where('title', $buildingTitle)->first();
+            }
+            if($roomTitle = $request->get('room')){
 
-            // Если здание найдено, ищем все аудитории, относящиеся к этому зданию
-            if ($building) {
-                $rooms = Room::where('building_id', $building->id)
-                    ->where('view_id', '3') // Условие для выбора только аудиторий
-                    ->get();
+                $place = Room::where('title',$roomTitle)->get();
 
-                // Вычисляем площадь аудиторий
-                foreach ($rooms as $room) {
-                    $totalArea += $room->S;
+                foreach ($place as $room) {
+                    $p += $room->S;
                 }
+                $square = 0;
+
+                if ($request->method === 'GET') {
+                    $rooms=Room::all();
+                    foreach ($rooms as $room) {
+                        $square += $room->S;
+                    }
+
+                }
+
+                return new View('employees.counting', ['place' => $p, 'square' => $square]);
             }
         }
-        $square = 0;
 
-        if ($request->method === 'GET') {
-            $rooms=Room::all();
-            foreach ($rooms as $room) {
-                $square += $room->S;
-            }
-
-        }
 
         // Отображаем представление с площадью
-        return new View('employees.counting', ['totalArea' => $totalArea, 'square' => $square]);
+        return new View('employees.counting', ['place' => $place]);
     }
+
+
+
+
 
 
 
@@ -146,34 +153,30 @@ class Employees
     {
         // Площадь
         $place = 0;
+
         if ($request->method === 'GET') {
 
-
             // Получаем название выбранного здания
-            $buildingTitle = $request->get('building_id');
+            if($buildingTitle = $request->get('building_id')){
+                $rooms=Room::where('building_id',$buildingTitle)->where('view_id', '3') // Условие для выбора только аудиторий
+                ->get();
+                return new View('employees.cv', ['rooms' => $rooms]);
 
-
-            $roomTitle = $request->get('room');
-
-            // Находим соответствующий building_id
-            $building = Building::where('title', $buildingTitle)->first();
-
-            // Если здание найдено, ищем все аудитории, относящиеся к этому зданию
-            if ($building) {
-                $rooms = Room::where('building_id', $building->id)
-                    ->where('title', $roomTitle) // Условие для выбора только аудиторий
-                    ->get();
-
-                // Вычисляем кол-во посадочных мест
-                foreach ($rooms as $room) {
-                    $place += $room->count;
-                }
             }
+            if($roomTitle = $request->get('room')){
+
+                        $place = Room::where('title',$roomTitle)->get();
+
+                foreach ($place as $room) {
+                    $p += $room->count;
+                }
+                    return new View('employees.cv', ['place' => $p]);
+                }
         }
 
 
         // Отображаем представление с площадью
-        return new View('employees.cv', ['place' => $place, 'rooms' => $rooms]);
+        return new View('employees.cv', ['place' => $place]);
     }
 
 
@@ -202,5 +205,11 @@ class Employees
 
         return new View('employees.search', ['room' => $room, 'message' => $message ?? null]);
     }
+
+
+
+
+
+
 
 }
