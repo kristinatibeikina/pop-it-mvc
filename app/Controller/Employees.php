@@ -8,7 +8,7 @@ use Src\Request;
 use Model\Building;
 use Model\Views;
 use Src\View;
-
+error_reporting(0);
 
 class Employees
 {
@@ -114,7 +114,14 @@ class Employees
             if($buildingId = $request->get('building_id')){
                 $rooms=Room::where('building_id',$buildingId)->where('view_id', '3') // Условие для выбора только аудиторий
                 ->get();
-                return new View('employees.counting', ['rooms' => $rooms]);
+                if ($request->method === 'GET') {
+                    $r=Room::all();
+                    foreach ($r as $room) {
+                        $square += $room->S;
+                    }
+
+                }
+                return new View('employees.counting', ['rooms' => $rooms, 'square' => $square]);
 
             }
             if($roomTitle = $request->get('room')){
