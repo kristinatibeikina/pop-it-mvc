@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Image;
 use Model\Post;
 use Src\View;
 use Src\Request;
@@ -17,9 +18,24 @@ class Site
     }
 
 
-    public function hello(): string
+    public function hello(Request $request): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+        $images=Image::all();
+
+        if ($request->method === 'POST') {
+
+            $image = $_FILES['image']['name'];
+            $imagePath = $_SERVER['DOCUMENT_ROOT'] . "/pop-it-mvc/public/image/";
+            $uploaded_file = $imagePath . basename($image);
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploaded_file);
+
+            if (Image::create([
+                'image' => $uploaded_file,
+                'name'=>$image])) {
+                app()->route->redirect('/hello');
+            }
+        }
+        return new View('site.hello', ['message' => 'hello working','images'=>$images]);
     }
 
 
@@ -33,6 +49,7 @@ class Site
         if (Auth::attempt($request->all())) {
             app()->route->redirect('/hello');
         }
+
         //Если аутентификация не удалась, то сообщение об ошибке
         return new View('site.login', ['message' => 'Неправильные логин или пароль']);
     }
@@ -42,6 +59,8 @@ class Site
         Auth::logout();
         app()->route->redirect('/login');
     }
+
+
 
 
 

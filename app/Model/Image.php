@@ -5,20 +5,18 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Image extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'filename',
-        'filepath',
-        'filetype',
-        'filesize',
+        'img',
+        'name'
     ];
 
 
-    public $table = 'view';
+    public $table = 'img';
 
 
 

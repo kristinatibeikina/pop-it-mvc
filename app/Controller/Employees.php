@@ -2,7 +2,7 @@
 
 namespace Controller;
 use Src\Validator\Validator;
-
+use Model\Image;
 use Model\Room;
 use Src\Request;
 use Model\Building;
@@ -39,9 +39,6 @@ class Employees
                 app()->route->redirect('/addendum');
             }
         }
-
-
-
         return new View('employees.addendum');
     }
 
@@ -212,10 +209,6 @@ class Employees
 
         return new View('employees.search', ['room' => $room, 'message' => $message ?? null]);
     }
-
-
-
-
 
 
 

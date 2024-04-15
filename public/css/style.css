@@ -156,6 +156,7 @@ main{
 }
 .counting_bloc{
     margin-left: 218px;
+    width: 844px;
 }
 .response{
     margin-top: 25px;
@@ -170,4 +171,20 @@ main{
 .a_search{
     background-color: #35359b;
     color: white;
+    text-decoration: none;
+}
+.search_response{
+    font-size: 35px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.image{
+    height: 200px;
+    width: 200px;
+    margin: 10px 10px 10px 10px;
+}
+.btn_img{
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
