@@ -58,6 +58,7 @@ class Site
     {
         Auth::logout();
         app()->route->redirect('/login');
+
     }
 
 

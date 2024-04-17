@@ -23,6 +23,8 @@
             "Src\\": "core/Src/",
             "": "app/"
         }
+    },
+    "require-dev": {
+        "phpunit": "^11.2@dev"
     }
-
 }
