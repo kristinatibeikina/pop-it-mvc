@@ -1,7 +1,6 @@
 <?php
 namespace Controller;
 use Src\Validator\Validator;
-
 use Src\Request;
 use Model\User;
 use Src\View;
@@ -13,7 +12,7 @@ class Admin
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'name' => ['required','cyrillic'],
+                'name' => ['required', 'minimum','cyrillic'],
                 'login' => ['required', 'unique:users,login'],
                 'password' => ['required','minimum','latin']
             ], [
@@ -25,8 +24,11 @@ class Admin
             ]);
 
             if($validator->fails()){
+
+
                 return new View('admin.signup',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+
             }
 
             if (User::create($request->all())) {

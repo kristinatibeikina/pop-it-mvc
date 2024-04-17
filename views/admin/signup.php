@@ -10,4 +10,8 @@
         <input type="password" name="password" placeholder="Пароль" class="input_password"><br>
         <button class="btn">Отправить</button>
     </form>
+
+    <?php if (isset($s)): ?>
+        <h2 class="add_title_dv">Общая площадь аудиторий: <?= $s; ?></h2>
+    <?php endif; ?>
 </div>
