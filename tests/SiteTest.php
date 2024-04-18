@@ -8,7 +8,7 @@ class SiteTest extends TestCase
     /**
      * @dataProvider additionProvider
      */
-    public function testSignup(string $httpMethod, array $userData, string $message): void
+    public function testLogin(string $httpMethod, array $userData, string $message): void
     {
         // Проверяем, если пользователь с логином 'proverka1' передан в тест
 
