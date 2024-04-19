@@ -11,7 +11,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.4 | ^8.0"
+        "php": "^7.4 | ^8.0",
+        "illuminate/database": "9.x-dev",
+        "illuminate/events": "9.x-dev",
+        "nikic/fast-route": "v1.x-dev",
+        "kristinatibeikina/validator": "dev-main",
+        "kristinatibeikina/collectt": "dev-test1"
     },
     "autoload": {
         "psr-4": {
