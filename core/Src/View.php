@@ -41,6 +41,7 @@ class View
         return $this->getRoot() . "/$view.php";
     }
 
+
     public function render(string $view = '', array $data = []): string
     {
         $path = $this->getPathToView($view);
@@ -76,6 +77,7 @@ class View
         http_response_code($code);
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         exit();
+
     }
 
 
