@@ -12,13 +12,6 @@ class AdminTest extends TestCase
     {
         // Выбираем из БД пользователя с логином "0"
 
-        if ($userData['login'] === '0') {
-            // Создаем пользователя с незахешированным паролем 'proverka'
-            User::create([
-                'login' => $userData['login'],
-                'password' => md5('proverka')
-            ]);
-        }
 
         // Создаем заглушку для класса Request.
         $request = $this->createMock(\Src\Request::class);
@@ -43,7 +36,7 @@ class AdminTest extends TestCase
         $this->assertTrue($userExists);
 
         //Удаляем созданного пользователя из базы данных
-        User::where('login', $userData['login'])->delete();
+
     }
 
 
@@ -52,8 +45,12 @@ class AdminTest extends TestCase
     {
         return [
             ['GET', ['name'=>'','login' => '', 'password' => ''], '<h3></h3>'],
-            ['POST', ['name'=>'','login' => '', 'password' => ''], '<h3>{"name":["Поле name пусто"],"login":["Поле login пусто"],"password":["Поле password пусто","Поле password недостаточный размер (мин 9 симаолов)","Поле password только латиница и цифры"]}</h3>'],
-            ['POST', ['name'=>'Кристи','login' => '0', 'password' => 'hbcnb1safd23456'], '<h3>{"login":["Поле login пусто","Поле login должно быть уникально"]}</h3>'],
+            //Проверка пустых полей
+            ['POST', ['name'=>'','login' => '', 'password' => md5(time())], '<h3>{"name":["Поле name пусто","Поле name только кирилица"],"login":["Поле login пусто"],"password":["Поле password пусто","Поле password недостаточный размер (мин 9 симаолов)","Поле password только латиница и цифры"]}</h3>'],
+            //Проверка на занятый логин
+            ['POST', ['name'=>'Кристи','login' => '0', 'password' => md5(time())], '<h3>{"login":["Поле login пусто","Поле login должно быть уникально"]}</h3>'],
+            //Создание пользователя
+            ['POST', ['name'=>'Кристи','login' => md5(time()), 'password' => md5(time())], '<h3></h3>'],
         ];
     }
 

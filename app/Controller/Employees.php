@@ -67,16 +67,17 @@ class Employees
         //Cохранение данных в базу данных
         if($request->method === 'POST'){
             $validator = new Validator($request->all(),[
-                'title' => ['unique:building,title', 'required'],
+                'title' => ['unique:building,title', 'required','cyrillic'],
                 'S'=>['required','numeric'],
                 'count'=>['required','numeric'],
                 'building_id'=>['required'],
                 'view_id'=>['required'],
             ],
                 [
-                    'required' => 'empty',
+                    'required' => 'field empty',
                     'unique' => 'Field must be unique',
                     'numeric' => 'Field none numeric',
+                    'cyrillic' => 'Field none cyrillic',
                 ]);
 
 

@@ -10,14 +10,15 @@ class EmployeesTest extends TestCase
      */
     public function testSignup(string $httpMethod, array $userData, string $message): void
     {
-        // Выбираем из БД пользователя с логином "0"
+        // Выбираем из БД помещение с названием "КТРМ"
 
-        if ($userData['title'] === 'КТРМ') {
-            // Создаем пользователя с незахешированным паролем 'proverka'
+        if ($userData['title'] === 'КТР') {
+            // Создаем поьещение с названием 'КТРМ'
             Room::create([
                 'title' => $userData['title']
             ]);
         }
+
 
         // Создаем заглушку для класса Request.
         $request = $this->createMock(\Src\Request::class);
@@ -51,7 +52,17 @@ class EmployeesTest extends TestCase
     {
         return [
             ['GET', ['title'=>'','S' => '', 'count' => '','building_id' => '','view_id' => ''], '<h3></h3>'],
-
+                //Негативные тесты
+            //Проверка на занятый title
+            ['POST', ['title'=>'ТГУ','S' => '12', 'count' => '12','building_id' => '7','view_id' => '2'], '<h3>{"title":{"0":"Field must be unique"}}</h3>'],
+            //Проверка на кирилицу
+            ['POST', ['title'=>'TGU','S' => '12', 'count' => '12','building_id' => '14','view_id' => '3'], '<h3>{"title":{"0":"Field none cyrillic"}}</h3>'],
+            //Пустые поля
+            ['POST', ['title'=>'','S' => '', 'count' => '','building_id' => '7','view_id' => '2'], '<h3>{"title":{"0":"Field must be unique","1":"field empty","2":"Field none cyrillic"},"S":{"0":"field empty","1":"Field none numeric"},"count":{"0":"field empty","1":"Field none numeric"}}</h3>'],
+            //Проверка когда не введены S и count
+            ['POST', ['title'=>'ТРУМ','S' => '', 'count' => '','building_id' => '14','view_id' => '2'], '<h3>{"S":{"0":"field empty","1":"Field none numeric"},"count":{"0":"field empty","1":"Field none numeric"}}</h3>'],
+                //Позитивные тест
+            ['POST', ['title'=>'КТРМ','S' => '12', 'count' => '12','building_id' => '7','view_id' => '2'], '<h3></h3>'],
         ];
     }
 
